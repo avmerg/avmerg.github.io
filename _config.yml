@@ -16,7 +16,7 @@ author: Alicia Mergenthaler
 navbar-links:
   About Me: "aboutme"
   Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
+    #- Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
   Author's home: "https://www.linkedin.com/in/alicia-mergenthaler/"
 
@@ -39,7 +39,7 @@ round-avatar: true
 # Select the social network links that you want to show in the footer.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "alivatchu@gmail.com"
+  email: "alicia.mergenthaler@gmail.com"
   rss: true  # remove this line if you don't want to show an RSS link at the bottom
  # facebook: deanattali
   github: avmerg
