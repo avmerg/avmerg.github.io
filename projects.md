@@ -20,7 +20,6 @@ Alicia Mergenthaler & Taha Yasseri (2021) Selling sex: what determines rates and
   style="width:100%; height:300px;"
 ></iframe>
 
-[I'm an inline-style link with title](http://pubdocs.worldbank.org/en/984511610628201520/Indonesia-SocialMedia-Monitoring-Round-1.pdf "World Bank Social Media Monitoring")
 
 ### DataKind UK
 
