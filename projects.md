@@ -8,16 +8,15 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ### InterviewQuery
 
-I write curriculum and content to help data scientists get jobs! 
+["InterviewQuery Stats and A/B Testing Course"](https://www.interviewquery.com/courses/data-science-course/lessons/statistics-and-ab-testing/ae12a01d-3419-430e-8e73-a53f1e49d509 "InterviewQuery Stats and A/B Testing Course")
 
-#### Stats course
+I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions larger questions.
 
-[Link](https://www.interviewquery.com/courses/data-science-course/lessons/statistics-and-ab-testing/ae12a01d-3419-430e-8e73-a53f1e49d509){: .btn}
+<iframe
+  src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/stats_course.png"
+  style="width:100%; height:300px;"
+></iframe>
 
-* I wrote a stats A/B Testing Course.
-
-![Stats Course Teaser ](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/stats_course.png)
- I've also done some work on how data scientists progress through different technical questions larger questions.
 
 #### Other content --> Streamlit Dashboard
 Immigration article
@@ -25,11 +24,14 @@ Immigration article
 
 #### LinkedIn Analysis
 
-### Master's Thesis (Published 2021)
+### Oxford Internet Institute 
 
-Alicia Mergenthaler & Taha Yasseri (2021) Selling sex: what determines rates and popularity? An analysis of 11,500 online profiles, Culture, Health & Sexuality, DOI: 10.1080/13691058.2021.1901145
+["Selling sex: what determines rates and popularity?"](https://pubmed.ncbi.nlm.nih.gov/33882783/ "Link to Master's Thesis")
+
+* Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace.
 
 ### World Bank/MIT IDSS
+
 
 <iframe
   src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf"
@@ -39,17 +41,19 @@ Alicia Mergenthaler & Taha Yasseri (2021) Selling sex: what determines rates and
 Conference paper submitted to ABCDE
 
 ### DataKind UK
+["Helping with CAP"](https://datakind.org.uk/portfolio-item/helping-with-cap/ "Helping with CAP")
+
+["What's Data Got to Do With It?"](https://capuk.org/connect/keep-up-to-date/blog/whats-data-got-to-do-with-it "CAP Blog Post")
 
 
-[I'm an inline-style link with title](https://datakind.org.uk/portfolio-item/helping-with-cap/ "World Bank Social Media Monitoring")
+
 
 ### Me and My Big Data (University of Liverpool)
-Attach report 
+["Me and My Big Data Project"](https://www.liverpool.ac.uk/media/livacuk/humanitiesampsocialsciences/meandmybiddata/Understanding,Citizens,Data,Literacies,Research,,Report,Final.pdf/ "Me and My Big Data Project")
+
+* I used factor analysis and other psychometric techniques to find predictors of digital literacy in the UK. Contributed to the "Me and My Big Data Project".
 
 ### CorrelationOne
 
 
-<iframe
-  src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf"
-  style="width:100%; height:300px;"
-></iframe>
+
