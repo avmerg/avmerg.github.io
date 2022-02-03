@@ -11,9 +11,15 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 I write curriculum and content to help data scientists get jobs! 
 
 #### Stats course
+
+[Link](https://www.interviewquery.com/courses/data-science-course/lessons/statistics-and-ab-testing/ae12a01d-3419-430e-8e73-a53f1e49d509){: .btn}
+
+* I wrote a stats A/B Testing Course.
+
+![Stats Course Teaser ](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/stats_course.png)
  I've also done some work on how data scientists progress through different technical questions larger questions.
 
-#### Other content
+#### Other content --> Streamlit Dashboard
 Immigration article
 
 
