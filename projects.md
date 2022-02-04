@@ -10,7 +10,7 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ["InterviewQuery Stats and A/B Testing Course"](https://www.interviewquery.com/courses/data-science-course/lessons/statistics-and-ab-testing/ae12a01d-3419-430e-8e73-a53f1e49d509 "InterviewQuery Stats and A/B Testing Course")
 
-* I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions larger questions.
+* I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions and larger questions about career progression in data science.
 
 
 ![image](./assets/img/stats_course.png)
