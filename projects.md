@@ -10,7 +10,7 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ["InterviewQuery Stats and A/B Testing Course"](https://www.interviewquery.com/courses/data-science-course/lessons/statistics-and-ab-testing/ae12a01d-3419-430e-8e73-a53f1e49d509 "InterviewQuery Stats and A/B Testing Course")
 
-I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions larger questions.
+* I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions larger questions.
 
 
 ![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/stats_course.png)
@@ -23,7 +23,7 @@ I write curriculum and content to help data scientists get jobs! I've also done 
 
 ### World Bank/MIT IDSS
 
-* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we did social media monitoring of COVID-19 across Indonesia. 
+* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we did social media monitoring of COVID-19 across Indonesia. We 
 
 <object data= "/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
@@ -31,11 +31,12 @@ I write curriculum and content to help data scientists get jobs! I've also done 
 Conference paper submitted to ABCDE
 
 ### DataKind UK
+
 ["Helping with CAP"](https://datakind.org.uk/portfolio-item/helping-with-cap/ "Helping with CAP")
 
 ["What's Data Got to Do With It?"](https://capuk.org/connect/keep-up-to-date/blog/whats-data-got-to-do-with-it "CAP Blog Post")
 
-
+*Co-led a team of data scientists to find out pain points in the operations at CAP, a debt-counseling charity. We used 
 
 
 ### Me and My Big Data (University of Liverpool)
@@ -45,6 +46,4 @@ Conference paper submitted to ABCDE
 
 ### CorrelationOne
 
-* Embed the network diagram?
-["Me and My Big Data Project"](https://www.liverpool.ac.uk/media/livacuk/humanitiesampsocialsciences/meandmybiddata/Understanding,Citizens,Data,Literacies,Research,,Report,Final.pdf/ "Me and My Big Data Project")
 
