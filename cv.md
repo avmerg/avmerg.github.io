@@ -6,4 +6,6 @@ subtitle: My resume!
 
 ### CV
 
-<embed src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/Alicia_M_CV.pdf type=application/pdf">
+![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/Alicia_CV.jpg)
+
+<embed src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/Alicia_CV.jpg.pdf type=application/pdf">
