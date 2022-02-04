@@ -1,12 +1,12 @@
 ---
 layout: page
 title: CV
-subtitle: My resume!
+subtitle: My resume
 image: assets/img/Alicia_CV.jpg
 ---
 
 ### CV
 
-![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/Alicia_CV.jpg)
+![image](./assets/img/Alicia_CV.jpg)
 
 <embed src="/assets/img/Alicia_CV.jpg.pdf type=application/pdf">

@@ -23,9 +23,11 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ### World Bank/MIT IDSS
 
+![image](./assets/img/tweet_topics.png)
+
 * As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we did social media monitoring of COVID-19 across Indonesia. We looked a
 
-<object data= "/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
+<object data= "./assets/img/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
 
 Conference paper submitted to ABCDE
@@ -45,7 +47,7 @@ Conference paper submitted to ABCDE
 * I used factor analysis and other psychometric techniques to find predictors of digital literacy in the UK. Contributed to the "Me and My Big Data Project".
 
 ### CorrelationOne
+![image](./assets/img/poster ds4a - Final.jpg)
 
-*
-
+* Project lead for analysis of political tweets in the UK during COVID-19.
 
