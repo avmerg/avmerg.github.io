@@ -8,4 +8,4 @@ subtitle: My resume!
 
 ![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/Alicia_CV.jpg)
 
-<embed src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/Alicia_CV.jpg.pdf type=application/pdf">
+<embed src="/assets/img/Alicia_CV.jpg.pdf type=application/pdf">
