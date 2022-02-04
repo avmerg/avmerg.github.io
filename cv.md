@@ -2,7 +2,7 @@
 layout: page
 title: CV
 subtitle: My resume!
-share-img: assets/img/Alicia_CV.jpg
+image: assets/img/Alicia_CV.jpg
 ---
 
 ### CV
