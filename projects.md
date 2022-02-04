@@ -23,7 +23,7 @@ I write curriculum and content to help data scientists get jobs! I've also done 
 
 ### World Bank/MIT IDSS
 
-* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we 
+* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we did social media monitoring of COVID-19 across Indonesia. 
 
 <object data= "/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
