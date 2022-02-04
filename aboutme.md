@@ -8,9 +8,9 @@ I'm Alicia and I'm a data scientist. I'm interested in computational social scie
 
 ### What I'm also interested in
 - Screenwriting/playwriting
+- Studies of women, gender and sexuality
 - Life abroad
 - Higher education
-- WGS
 
 I'll (hopefully) be talking a lot about these subjects and others on my blog.
 
