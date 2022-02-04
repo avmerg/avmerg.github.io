@@ -1,7 +1,7 @@
 ---
 layout: page
 title: CV
-subtitle: My resume
+subtitle: 
 image: assets/img/Alicia_CV.jpg
 ---
 
