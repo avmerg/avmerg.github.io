@@ -13,7 +13,7 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 * I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions larger questions.
 
 
-![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/stats_course.png)
+![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/stats_course.png)
 
 ### Oxford Internet Institute 
 
@@ -23,7 +23,7 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ### World Bank/MIT IDSS
 
-* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we did social media monitoring of COVID-19 across Indonesia. We 
+* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we did social media monitoring of COVID-19 across Indonesia. We looked a
 
 <object data= "/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
@@ -36,7 +36,7 @@ Conference paper submitted to ABCDE
 
 ["What's Data Got to Do With It?"](https://capuk.org/connect/keep-up-to-date/blog/whats-data-got-to-do-with-it "CAP Blog Post")
 
-*Co-led a team of data scientists to find out pain points in the operations at CAP, a debt-counseling charity. We used 
+*Co-led a team of data scientists to find out pain points in the operations at CAP, a debt-counseling charity. 
 
 
 ### Me and My Big Data (University of Liverpool)
@@ -45,5 +45,7 @@ Conference paper submitted to ABCDE
 * I used factor analysis and other psychometric techniques to find predictors of digital literacy in the UK. Contributed to the "Me and My Big Data Project".
 
 ### CorrelationOne
+
+*
 
 
