@@ -12,17 +12,8 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions larger questions.
 
-<iframe
-  src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/stats_course.png"
-  style="width:100%; height:300px;"
-></iframe>
 
-
-#### Other content --> Streamlit Dashboard
-Immigration article
-
-
-#### LinkedIn Analysis
+![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/stats_course.png)
 
 ### Oxford Internet Institute 
 
@@ -32,11 +23,10 @@ Immigration article
 
 ### World Bank/MIT IDSS
 
+* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we 
 
-<iframe
-  src="/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf"
-  style="width:100%; height:300px;"
-></iframe>
+<object data= "/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/docs/project_assets/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
+
 
 Conference paper submitted to ABCDE
 
@@ -55,5 +45,6 @@ Conference paper submitted to ABCDE
 
 ### CorrelationOne
 
-
+* Embed the network diagram?
+["Me and My Big Data Project"](https://www.liverpool.ac.uk/media/livacuk/humanitiesampsocialsciences/meandmybiddata/Understanding,Citizens,Data,Literacies,Research,,Report,Final.pdf/ "Me and My Big Data Project")
 

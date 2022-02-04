@@ -16,7 +16,7 @@ author: Alicia Mergenthaler
 navbar-links:
   About Me: "aboutme"
   Projects: "projects"
-  CV: "CV"
+  CV: "cv"
   Resources:
     #- Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
