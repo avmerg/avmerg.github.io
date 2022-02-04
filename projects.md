@@ -13,7 +13,7 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 * I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions larger questions.
 
 
-![image](/Users/aliciamergenthaler/Documents/GitHub/avmerg.github.io/assets/img/stats_course.png)
+![image](./assets/img/stats_course.png)
 
 ### Oxford Internet Institute 
 
