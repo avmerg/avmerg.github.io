@@ -19,6 +19,8 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ["Selling sex: what determines rates and popularity?"](https://pubmed.ncbi.nlm.nih.gov/33882783/ "Link to Master's Thesis")
 
+![image](./assets/img/sex_work_diagram.png)
+
 * Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace.
 
 * Methods: 
@@ -28,27 +30,24 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ### World Bank/MIT IDSS (2020)
 
-["World Bank Group Social Media Monitoring"](https://thedocs.worldbank.org/en/doc/984511610628201520-0070022021/original/IndonesiaSocialMediaMonitoringRound1.pdf/ "World Bank Group Social Media Monitoring")
+["World Bank Group Social Media Monitoring"](https://thedocs.worldbank.org/en/doc/984511610628201520-0070022021/original/IndonesiaSocialMediaMonitoringRound1.pdf "World Bank Group Social Media Monitoring")
 
 ![image](./assets/img/tweet_topics.png)
 
 * As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we monitored national sentiment and popular concerns around COVID-19 across Indonesia.
 
-* Methods: 
+* Methods: We used BERT 
 
 * Conclusions:
-
-
-<object data= "./assets/img/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
 * Analyzed  political polarization in the Indonesian presidential election in 2019.  Paper shortlisted for the Annual Bank Conference on Development Economics (ABCDE).
 
-* Methods: 
+<embed src= "./assets/img/indonesia_social_media.pdf" type="application/pdf">
+
+* Methods: Used 
 
 * Conclusions:
 
-
-<object data= "./assets/img/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
 ### DataKind UK (2020)
 
