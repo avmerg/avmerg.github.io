@@ -4,7 +4,7 @@ title: About me
 subtitle: A quick bio and some things I'm interested in.
 ---
 
-I'm Alicia and I'm a data scientist. I'm interested in computational social science, economics and the future of work. Right now, I'm working with InterviewQuery to help aspiring data scientists and analysts get their dream jobs!
+I'm Alicia and I'm a data scientist based in the SF Bay. I'm interested in computational social science, economics and the future of work. Right now, I'm working with InterviewQuery to help aspiring data scientists and analysts get their dream jobs!
 
 ### What I'm also interested in
 - Screenwriting/playwriting

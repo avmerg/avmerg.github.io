@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Projects
-subtitle: A peek at some of the projects I've done!
+subtitle: A peek at some of the recent projects I've done!
 ---
 
 Here's a quick look at some of the projects and research I've been a part of. Feel free to reach out with any questions!
@@ -21,15 +21,32 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 * Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace.
 
+* Methods: 
+
+* Conclusions:
+
+
 ### World Bank/MIT IDSS (2020)
+
+["World Bank Group Social Media Monitoring"](https://thedocs.worldbank.org/en/doc/984511610628201520-0070022021/original/IndonesiaSocialMediaMonitoringRound1.pdf/ "World Bank Group Social Media Monitoring")
 
 ![image](./assets/img/tweet_topics.png)
 
 * As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we monitored national sentiment and popular concerns around COVID-19 across Indonesia.
 
+* Methods: 
+
+* Conclusions:
+
+
 <object data= "./assets/img/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
 * Analyzed  political polarization in the Indonesian presidential election in 2019.  Paper shortlisted for the Annual Bank Conference on Development Economics (ABCDE).
+
+* Methods: 
+
+* Conclusions:
+
 
 <object data= "./assets/img/indonesia_social_media.pdf" width="1000" height="1000" type='application/pdf'></object>
 
@@ -39,16 +56,27 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ["What's Data Got to Do With It?"](https://capuk.org/connect/keep-up-to-date/blog/whats-data-got-to-do-with-it "CAP Blog Post")
 
-*Co-led a team of data scientists to find out pain points in the operations at CAP, a debt-counseling charity. 
+* Co-led a team of data scientists to find out pain points in the operations at CAP, a debt-counseling charity. 
 
 
 ### Me and My Big Data (University of Liverpool) (2020)
-["Me and My Big Data Project"](https://www.liverpool.ac.uk/media/livacuk/humanitiesampsocialsciences/meandmybiddata/Understanding,Citizens,Data,Literacies,Research,,Report,Final.pdf/ "Me and My Big Data Project")
+["Me and My Big Data Project"](https://www.liverpool.ac.uk/humanities-and-social-sciences/research/research-themes/centre-for-digital-humanities/projects/big-data/ "Me and My Big Data Project")
 
 * I used factor analysis and other psychometric techniques to find predictors of digital literacy in the UK. Contributed to the "Me and My Big Data Project".
+
+* Methods: 
+
+* Conclusions:
+
+
 
 ### CorrelationOne (2020)
 ![image](./assets/img/poster ds4a - Final.jpg)
 
 * Project lead for analysis of political tweets in the UK during COVID-19.
+
+* Methods: 
+
+* Conclusions:
+
 
