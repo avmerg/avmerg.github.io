@@ -19,9 +19,10 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ["Selling sex: what determines rates and popularity?"](https://pubmed.ncbi.nlm.nih.gov/33882783/ "Link to Master's Thesis")
 
-![image](./assets/img/sex_work_diagram.png)
-
 * Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace.
+
+
+![image](./assets/img/sex_work_diagram.png)
 
 * Methods: 
 
@@ -42,7 +43,7 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 * Analyzed  political polarization in the Indonesian presidential election in 2019.  Paper shortlisted for the Annual Bank Conference on Development Economics (ABCDE).
 
-<embed src= "./assets/img/indonesia_social_media.pdf" type="application/pdf">
+<embed src= "./assets/img/Indonesia_Polarization_ABCDE.pdf" type="application/pdf" />
 
 * Methods: Used 
 
