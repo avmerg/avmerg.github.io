@@ -12,6 +12,6 @@ I'm Alicia and I'm a data scientist based in the SF Bay. I'm interested in compu
 - Life abroad
 - Higher education
 
-I'll (hopefully) be talking a lot about these subjects and others on my blog.
+I'll be talking a lot about these subjects and others on my blog.
 
 
