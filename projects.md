@@ -51,12 +51,13 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 * Analyzed  political polarization in the Indonesian presidential election in 2019. We found wide gaps in the information flow between followers of the two candidates, Prabowo and Jokowi. Paper shortlisted for the Annual Bank Conference on Development Economics (ABCDE). 
 
-* Methods:s
+* Methods:
 * Data Collection: Twitter API, Google BigQuery
 *  Data Analysis: Topic analysis, sentiment analysis, word embeddings BERT,  latent dirichlet allocation
 * Viz: Streamlit (interactive dashboard), Plotly, seaborn, Gephi, Folium/geopandas
 
-<embed src= "./assets/img/Indonesia_Polarization_ABCDE.pdf" type="application/pdf" />
+
+[download pdf](./assets/img/Indonesia_Polarization_ABCDE.pdf) 
 
 * Methods: 
 Data Collection: Twitter API
