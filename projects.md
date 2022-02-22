@@ -21,17 +21,10 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ["How sex work has been affected by the pandemic"](https://theconversation.com/how-sex-work-has-been-affected-by-the-pandemic-160736 "How sex work has been affected by the pandemic")
 
-
-* Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace. Nationality, gender, and the nature of services offered were strongly associated with price.
-=
 ![image](./assets/img/sex_work_diagram.png)
 
-* Data Collection: (Python) web scraping, XML parsing
-(if you want to check out the data it's here and publicly available!: )
-
-* Data Analysis: Network analysis (community detection), cosine similarity, regression. 
-
-* Viz: Seaborn, Gephi
+Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace. Nationality, gender, and the nature of services offered were strongly associated with price. As part of the research, I used network analysis, community detection, and cosine similarity metrics to find common 'baskets' of services offered by sex workers. The dataset I created for this research exists publically on the Harvard Dataverse: 
+https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OMCDPI.
 
 
 ### World Bank/MIT IDSS (2020)
@@ -40,32 +33,14 @@ Here's a quick look at some of the projects and research I've been a part of. Fe
 
 ![image](./assets/img/tweet_topics.png)
 
-* As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we monitored national sentiment and popular concerns around COVID-19 across Indonesia. We found that conversations around government trust and economic security were especially prevalent in the early pandemic.
+As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, we monitored national sentiment and popular concerns around COVID-19 across Indonesia. We found that conversations around government trust and economic security were especially prevalent in the early pandemic. Methods I used included topic analysis (LDA, dynamic topic analysis, BERT word embeddings), and sentiment analysis. I also created data pipelines to feed into an interactive Streamlit dashboard. This dashboard served as a template and was replicated in other countries as part of the Data Development partnership initiative.  
 
-* Methods: 
-
-* Data Collection: Twitter API, Google BigQuery
-*  Data Analysis: Topic analysis, sentiment analysis, word embeddings (BERT), latent dirichlet allocation
-* Viz: Streamlit (interactive dashboard), Plotly, seaborn, Gephi, Folium/geopandas
 
 ![image](./assets/img/map.png)
 
-* Analyzed  political polarization in the Indonesian presidential election in 2019. We found wide gaps in the information flow between followers of the two candidates, Prabowo and Jokowi. Paper shortlisted for the Annual Bank Conference on Development Economics (ABCDE). 
-
-* Methods:
-* Data Collection: Twitter API, Google BigQuery
-*  Data Analysis: Topic analysis, sentiment analysis, word embeddings BERT,  latent dirichlet allocation
-* Viz: Streamlit (interactive dashboard), Plotly, seaborn, Gephi, Folium/geopandas
-
+As part of the World Bank Group team, I analyzed  political polarization in the Indonesian presidential election in 2019. We constructed a social graph of the interactions between followers of the two candidates, Prawbowo and Jokowi, and found a high degree of polarization and discrepancies in information flow between both sides. We saw mapped Twitter activity over time and across geographies in Indonesia at the time of the election. Our paper was shortlisted for the Annual Bank Conference on Development Economics (ABCDE) in 2020. 
 
 [download pdf](./assets/img/Indonesia_Polarization_ABCDE.pdf) 
-
-* Methods: 
-Data Collection: Twitter API
-Data Analysis: Network analysis, sentiment analysis
-Viz: Gephi, Matplotlib
-
-* Conclusions:
 
 
 ### DataKind UK (2020)
@@ -80,23 +55,12 @@ Viz: Gephi, Matplotlib
 ### Me and My Big Data (University of Liverpool) (2020)
 ["Me and My Big Data Project"](https://www.liverpool.ac.uk/humanities-and-social-sciences/research/research-themes/centre-for-digital-humanities/projects/big-data/ "Me and My Big Data Project")
 
-* I used factor analysis and other psychometric techniques to find predictors of digital literacy and potential harms from digital technology in the UK. Contributed to the "Me and My Big Data Project".
-
-* Methods: 
-Data Collection: Survey data
-Data Analysis: Factor analysis, regression (R), decision trees
-Viz: Ggplot2
+As a statistician on this project, I investigated digital literacy and potential harms from digital technology in the UK. I contributed to the "Me and My Big Data Project", where I helped developed profiles of different data users and consumers in the UK. For this work, I primarily worked with survey data and used factor analysis and other psychometric techniques, as well as regression and decision trees in R. 
 
 
 ### CorrelationOne (2020)
 ![image](./assets/img/poster ds4a - Final.jpg)
 
-* Project lead for analysis of political tweets in the UK during COVID-19. Found disparities in information flow re: COVID-19 between political parties.
-
-* Methods: 
-Data Collection: Twitter API
-Data Analysis: Network Analysis, sentiment analysis
-Viz: Networkx, Gephi
-
+I led a project to analyze of political tweets in the UK during COVID-19. I found that political figures typically amplified information about COVID-19 disseminated by their own parties, and that news outlets (with the exception of Sky News) were balanced between political affiliations in the network. For this project, I used networkX, Gephi, and the Twitter API.
 
 
