@@ -43,7 +43,7 @@ As part of the World Bank Group team, I analyzed  political polarization in the 
 
 ![image](./assets/img/feature_eng.png)
 
-I co-led a team of data scientists to find out pain points in the operations at CAP, a debt-counseling charity. We used interpretable machine learning methods to find out indicators of higher-than-expected workload, measured the success of chase procedures, and predicted the route a client would take given a limited amount of information.
+I co-led a team of data scientists to find out pain points in the operations at CAP, a debt-counseling charity. We used interpretable machine learning methods to find out indicators of higher-than-expected workload, measured the success of chase procedures, and engineered features to predict the route a client would take.
 
 ### [University of Liverpool: "Me and My Big Data Project" (2020)](https://www.liverpool.ac.uk/humanities-and-social-sciences/research/research-themes/centre-for-digital-humanities/projects/big-data/ "Me and My Big Data Project")
 
