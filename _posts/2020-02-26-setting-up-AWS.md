@@ -12,7 +12,7 @@ In this blog post, I'm going to walk you through getting Selenium to run on AWS 
 
 This information was surprisingly hard to find online. You may want to look at SageMaker for a potentially easier solution to this problem but this is how I did it!
 
-** Preparing the server
+### Preparing the server
 
 * Let's get conda on there!
 
@@ -32,6 +32,7 @@ This information was surprisingly hard to find online. You may want to look at S
     `sudo apt install libgl1-mesa-glx`
 
 * Get the linux signing key and some other steps to configure the Google Chrome browser.
+
     `sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo  apt-key add`
 
     `echo 'deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list`
