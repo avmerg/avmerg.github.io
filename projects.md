@@ -34,7 +34,7 @@ As part of a team collaborating with World Bank Group, Stanford, and MIT IDSS, w
 
 As part of the World Bank Group team, I analyzed  political polarization in the Indonesian presidential election in 2019. We constructed a social graph of the interactions between followers of the two candidates, Prawbowo and Jokowi, and found polarization and low degrees of information flow between sides. We saw mapped Twitter activity over time and across geographies in Indonesia at the time of the election. Our paper was shortlisted for the Annual Bank Conference on Development Economics (ABCDE) in 2020. 
 
-[download pdf](./assets/img/Indonesia_Polarization_ABCDE.pdf) 
+<a href="./assets/img/Indonesia_Polarization_ABCDE.pdf" target="_blank">PDF.</a>
 
 
 ### ["DataKind: Helping with CAP" (2020)](https://datakind.org.uk/portfolio-item/helping-with-cap/ "Helping with CAP")
