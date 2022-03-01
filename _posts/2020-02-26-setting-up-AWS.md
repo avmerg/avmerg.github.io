@@ -8,7 +8,7 @@ share-img: /assets/img/path.jpg
 tags: [python, data science]
 ---
 
-In this blog post, I'm going to walk you through getting Selenium to run on AWS to run a bot that requires screen capture (and that uses Tensorflow in this case). This will come as part of a series on creating bots.
+In this blog post, I'm going to walk you through getting Selenium to run on AWS to run a bot that requires screen capture (and that uses Tensorflow for a computer  vision task in this case). This will come as part of a series on creating bots.
 
 This information was surprisingly hard to find online. You may want to look at SageMaker for a potentially easier solution to this problem but this is how I did it!
 
@@ -31,7 +31,7 @@ This information was surprisingly hard to find online. You may want to look at S
 * Downloaded free implementation of OpenGL API for computer vision task.
     `sudo apt install libgl1-mesa-glx`
 
-* Get the linux signing key
+* Get the linux signing key and some other steps to configure the Google Chrome browser.
     `sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo  apt-key add`
 
     `echo 'deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list`
