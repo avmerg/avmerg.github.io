@@ -18,7 +18,7 @@ I write curriculum and content to help data scientists get jobs! I've also done 
 
 ![image](./assets/img/sex_work_diagram.png)
 
-This is the article from my Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace. Nationality, gender, and the nature of services offered were strongly associated with price. As part of the research, I used network analysis, community detection, and cosine similarity metrics to find common 'baskets' of services offered by sex workers. The dataset I created for this research exists publically on the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OMCDPI).
+This is the article from my Master's thesis, published in Culture, Health & Sexuality (2021). I analyzed rate-setting of sex workers using 11,500 scraped profiles on the UK's largest sex work marketplace. Nationality, gender, and the nature of services offered were strongly associated with price. As part of the research, I used network analysis, community detection, and cosine similarity metrics to find common 'baskets' of services offered by sex workers. The dataset I created for this research exists publicly on the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OMCDPI).
 
 
 ### ["World Bank Group/MIT IDSS: Social Media Monitoring (2020)"](https://thedocs.worldbank.org/en/doc/984511610628201520-0070022021/original/IndonesiaSocialMediaMonitoringRound1.pdf "World Bank Group Social Media Monitoring")
