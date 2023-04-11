@@ -6,11 +6,17 @@ subtitle: A peek at some of the recent projects I've done!
 
 Here's a quick look at some of the projects and research I've been a part of. Feel free to reach out with any questions!
 
+### ["Brennan Center for Justice at NYU Law: Midterm Monitor" (2022/23)"](https://www.brennancenter.org/our-work/research-reports/3-lessons-misinformation-midterms-spread-social-media "3 Lessons on Misinformation in the Midterms Spread on Social Media")
+
+![image](./assets/img/out_degree_election_retweet.png)
+
+I worked with a team of political scientists on investigating toxic narratives in the 2022 Midterm Elections. 
+
 ### ["InterviewQuery: Stats and A/B Testing Course" (2022)"](https://www.interviewquery.com/courses/data-science-course/lessons/statistics-and-ab-testing/ae12a01d-3419-430e-8e73-a53f1e49d509 "InterviewQuery Stats and A/B Testing Course")
 
 ![image](./assets/img/stats_course.png)
 
-I write curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions and larger questions about career advancement in data science.
+I wrote curriculum and content to help data scientists get jobs! I've also done some work on how data scientists progress through different technical questions and larger questions about career advancement in data science.
 
 ### ["Oxford Internet Institute: "Selling sex: what determines rates and popularity?" (2021)"](https://pubmed.ncbi.nlm.nih.gov/33882783/ "Link to Master's Thesis")
 
