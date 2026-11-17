@@ -267,9 +267,10 @@ async function hostStart(mode){
   renderHost(); publish();
 }
 let alertBox = '';
+const nameKey = n => 'n:' + String(n).trim().toLowerCase().slice(0,20);
 function rebuildPeers(){
   const byPid = new Map();
-  for (const st of conns.values()){ if (st.pid && st.role === 'p') byPid.set(String(st.pid), st); }
+  for (const st of conns.values()){ if (st.role === 'p' && st.name) byPid.set(nameKey(st.name), st); }
   peersNow = [...byPid.entries()].map(([pid, st]) => ({ peer:pid, isMe:false, presence:{ role:'p', name:st.name, r:st.r } }));
   syncPlayers(); renderHost();
 }
@@ -305,7 +306,8 @@ function publish(){
   const c = G.cur;
   if (G.rd===1 && (G.ph==='ans')) s.q = c.prompt[0];
   if (G.rd===1 && (G.ph==='guess' || G.ph==='reveal')) { s.q = c.prompt[0]; s.a = c.answers[c.ai].text; }
-  if (G.rd===1 && G.ph==='reveal') s.au = c.answers[c.ai].by;
+  if (G.rd===1 && G.ph==='reveal') { s.au = c.answers[c.ai].by; s.rt = c.right || []; s.fo = c.fooled || 0; }
+  if (G.rd===2 && G.ph==='tell') s.wr = c.writers || [];
   if (G.rd===2 && G.ph!=='intro' && G.ph!=='scores') s.seat = c.seat;
   if (G.rd===2 && G.ph==='vote') s.o = c.opts.map(o => o.text);
   if (G.rd===2 && G.ph==='tell') s.q = c.q;
@@ -327,7 +329,14 @@ function r1Ask(){ go(1,'ans',{ prompt:G.r1.prompts[G.r1.pi], passI:0, passOpen:f
 function r1NextPrompt(){ G.r1.pi++; if (G.r1.pi < G.r1.prompts.length) r1Ask(); else go(1,'scores'); }
 function r2Setup(){
   const ids = G.mode==='room' ? G.players.filter(p => online().has(p.id)).map(p=>p.id) : G.players.map(p=>p.id);
-  G.r2 = { seats: pick(ids.length ? ids : G.players.map(p=>p.id), G.cfg.r2), si:0 };
+  const pool = ids.length ? ids : G.players.map(p=>p.id);
+  const seats = [];
+  while (seats.length < G.cfg.r2 && pool.length){
+    let lap = shuffle(pool);
+    if (seats.length && lap.length > 1 && lap[0] === seats[seats.length-1]) lap.push(lap.shift()); // no back-to-back repeat
+    seats.push(...lap);
+  }
+  G.r2 = { seats: seats.slice(0, G.cfg.r2), si:0 };
   go(2,'intro');
 }
 function bankPool(){ return C.hot.filter(x => G.spicy || !x[1]).map(x => x[0]); }
@@ -357,7 +366,7 @@ function next(){
       const a = c.answers[c.ai];
       if (G.mode==='room'){
         const votes = resp(); let right = [], fooled = 0;
-        for (const [voter, v] of Object.entries(votes)){ if (voter === a.by) continue; if (v === a.by){ right.push(voter); addPts(voter,100); } else fooled++; }
+        for (const [voter, v] of Object.entries(votes)){ if (voter === a.by) continue; /* author's vote is the fake one */ if (v === a.by){ right.push(voter); addPts(voter,100); } else fooled++; }
         addPts(a.by, 50*fooled);
         return go(1,'reveal',{ votes, right, fooled });
       }
@@ -378,7 +387,7 @@ function next(){
       }
       let opts = [...seen.values()];
       if (!opts.length) opts = pick(bankPool(),3).map(t => ({text:t, by:[]}));
-      if (opts.length === 1) return go(2,'tell',{ opts, q:opts[0].text, tally:null });
+      if (opts.length === 1){ opts[0].by.forEach(id => addPts(id,100)); addPts(c.seat,100); return go(2,'tell',{ opts, q:opts[0].text, tally:null, writers:opts[0].by }); }
       return go(2,'vote',{ opts: opts.slice(0,8) });
     }
     case '2:vote': {
@@ -389,7 +398,7 @@ function next(){
       const w = +tops[Math.floor(Math.random()*tops.length)];
       c.opts[w].by.forEach(id => addPts(id,100));
       addPts(c.seat, 100);
-      return go(2,'tell',{ q:c.opts[w].text, tally, win:w });
+      return go(2,'tell',{ q:c.opts[w].text, tally, win:w, writers:c.opts[w].by });
     }
     case '2:pick': return; // needs a selection
     case '2:tell': return (G.r2.si + 1 < G.r2.seats.length) ? seatStart(G.r2.si + 1) : go(2,'scores');
@@ -434,6 +443,10 @@ function statusChips(){
 function scoreboard(){
   const s = G.players.slice().sort((a,b)=>b.score-a.score);
   return `<div class="score">${s.map((p,i)=>`<div><span>${i===0?'👑 ':''}${esc(p.name)}</span><span>${p.score}</span></div>`).join('')}</div>`;
+}
+function miniScores(){
+  const s = G.players.slice().sort((a,b)=>b.score-a.score);
+  return `<p class="note" style="margin-top:14px">🏆 ${s.map(p=>`${esc(p.name)} <b>${p.score}</b>`).join(' · ')}</p>`;
 }
 function foot(label, disabled){
   return `<div class="foot"><span class="pill">${G.mode==='room' ? 'Game code ' + esc(G.code) : 'Pass-the-phone mode'}</span>
@@ -517,12 +530,13 @@ function renderHost(){
     let extra = '';
     if (G.mode==='room'){
       extra = c.right.length ? `<p class="note">Got it right: <b>${c.right.map(pname).map(esc).join(', ')}</b></p>` : `<p class="note">Nobody got it!</p>`;
-      if (c.fooled) extra += `<p class="note">${esc(pname(a.by))} fooled ${c.fooled} ${c.fooled===1?'person':'people'} (+${50*c.fooled})</p>`;
+      extra = c.right.length ? `<p class="note">Got it right (+100 each): <b>${c.right.map(pname).map(esc).join(', ')}</b></p>` : `<p class="note">Nobody got it!</p>`;
+      extra += `<p class="note">${esc(pname(a.by))} fooled ${c.fooled} ${c.fooled===1?'person':'people'} (+${50*c.fooled})</p>`;
     } else {
       extra = `<p class="note">Tap everyone who guessed right (+100 each)</p><div class="chips">${G.players.filter(p=>p.id!==a.by).map(p=>`<span class="chip tap ${c.awarded.includes(p.id)?'on':''}" data-aw="${esc(p.id)}">${esc(p.name)}</span>`).join('')}</div>`;
     }
     h = roundBanner(1) + `<p class="mid">“${esc(a.text)}”</p><p class="note">was written by</p><h1>${esc(pname(a.by))}</h1>${extra}
-        <p class="note">${esc(pname(a.by))}, tell us the story!</p>` + foot('Next');
+        <p class="note">${esc(pname(a.by))}, tell us the story!</p>${miniScores()}` + foot('Next');
   }
   else if (G.rd === 2 && G.ph !== 'intro'){
     const seat = esc(pname(c.seat));
@@ -531,7 +545,8 @@ function renderHost(){
     else if (k === '2:vote') h = top + `<div class="tvopts">${c.opts.map((o,i)=>`<div class="tvopt"><span>${esc(o.text)}</span></div>`).join('')}</div><p class="note">Vote for the one you want ${seat} to answer.</p>${statusChips()}` + foot('Pick the winner');
     else if (k === '2:pick') h = top + `<p class="note">Pick a question together. Tap it to ask.</p><div class="tvopts">${c.opts.map((o,i)=>`<div class="tvopt click" data-pick="${i}"><span>${esc(o.text)}</span><span class="n">Ask ▶</span></div>`).join('')}</div>
         <div class="center"><button class="btn ghost small" id="shuf">🔀 New questions</button></div>` + foot('');
-    else if (k === '2:tell') h = roundBanner(2) + `<p class="mid">${seat}, our question for you:</p><p class="big">${esc(c.q)}</p><p class="note">Take your time. Everybody else, listen up.</p>` + foot(G.r2.si+1 < G.r2.seats.length ? 'Next hot seat' : 'Finish round');
+    else if (k === '2:tell') h = roundBanner(2) + `<p class="mid">${seat}, our question for you:</p><p class="big">${esc(c.q)}</p><p class="note">Take your time. Everybody else, listen up.</p>
+      <p class="note">+100 to ${seat} for telling${(c.writers||[]).length ? ' · +100 to ' + c.writers.map(pname).map(esc).join(', ') + ' for the winning question' : ''}</p>${miniScores()}` + foot(G.r2.si+1 < G.r2.seats.length ? 'Next hot seat' : 'Finish round');
   }
   else if (G.rd === 3 && G.ph !== 'intro'){
     const it = c.item;
@@ -641,7 +656,7 @@ async function doJoin(){
 }
 async function connectPlayer(){
   app.innerHTML = `<p class="mid">Pulling up a chair…</p>`;
-  view = 'player'; P.me = myPid();
+  view = 'player'; P.me = nameKey(P.name);
   try { if (P.peer) P.peer.destroy(); } catch(e){}
   let gotState = false;
   try { P.peer = await openPeer(null); }
@@ -691,14 +706,22 @@ function renderPlayer(s, force){
   }
   else if (k === '1:guess'){
     const mine = P.mine[s.q] && P.mine[s.q].toLowerCase() === String(s.a).toLowerCase();
-    if (mine) h = `<p class="mid">“${esc(s.a)}”</p><p class="big" style="font-size:30px">That one's yours 😏</p><p class="note">Poker face.</p>`;
+    if (mine && sent === undefined) h = `<p class="mid">“${esc(s.a)}”</p><p class="big" style="font-size:28px">That one's yours 😏</p>
+      <p class="note"><b>Fake vote:</b> these buttons don't count. Tap one whenever you like so nobody can tell you wrote it.</p>
+      <div class="opts">${others.map(([id,n])=>`<button class="opt" data-v="fake:${esc(id)}">Fake vote: ${esc(n)}</button>`).join('')}</div>`;
+    else if (mine) h = waitScreen('Fake vote sent 🤫', 'Nobody can tell. Poker face.');
     else if (sent !== undefined) h = waitScreen('Vote locked in', 'You picked ' + esc((s.pl.find(p=>p[0]===sent)||[,'someone'])[1]) + '.');
     else h = `<p class="mid">“${esc(s.a)}”</p><p class="note">Who said it?</p><div class="opts">${others.map(([id,n])=>`<button class="opt" data-v="${esc(id)}">${esc(n)}</button>`).join('')}</div>`;
   }
   else if (k === '1:reveal'){
     const au = (s.pl.find(p=>p[0]===s.au)||[,'Someone'])[1];
     const voted = P.sent[Object.keys(P.sent).find(x => x === s.k)] ;
-    h = `<p class="note">It was</p><h1 style="font-size:44px">${esc(au)}</h1><p class="note">Eyes on the TV for the story.</p>`;
+    let fb = '';
+    if (s.au === P.me) fb = s.fo ? `You fooled ${s.fo}! +${50*s.fo}` : 'Nobody was fooled. No points this time.';
+    else if ((s.rt||[]).includes(P.me)) fb = 'You got it! +100';
+    else if (sent !== undefined) fb = 'Not this time.';
+    else fb = 'You didn’t vote on this one.';
+    h = `<p class="note">It was</p><h1 style="font-size:44px">${esc(au)}</h1><p class="mid">${esc(fb)}</p><p class="note">Eyes on the TV for the story.</p>`;
   }
   else if (s.rd === 2){
     const seatName = (s.pl.find(p=>p[0]===s.seat)||[,'Someone'])[1];
