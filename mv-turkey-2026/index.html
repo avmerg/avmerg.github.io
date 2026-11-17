@@ -226,9 +226,10 @@ function renderHome(){
 
 /* ---------------- HOST ---------------- */
 let G, R = null, peersNow = [], HOST = null, conns = new Map(), lastS = null;
+const newGid = () => Math.random().toString(36).slice(2,8);
 function newGame(mode){
   return { mode, code:'', players:[], spicy:false, cfg:{r1:5,r2:5,r3ml:5,r3open:3},
-           rd:0, ph:'lobby', k:'k0', kc:0, cur:{}, r1:null, r2:null, r3:null, preds:[] };
+           rd:0, ph:'lobby', gid:newGid(), k:'', kc:0, cur:{}, r1:null, r2:null, r3:null, preds:[] };
 }
 async function hostStart(mode){
   view = 'host';
@@ -252,11 +253,13 @@ async function hostStart(mode){
       R = true;
       HOST.on('connection', conn => {
         conns.set(conn, {});
-        conn.on('open', () => { if (lastS) conn.send({ t:'s', s:lastS }); });
+        conn.on('open', () => { if (lastS) publish(); });
         conn.on('data', d => {
           if (!d || d.t !== 'pres' || typeof d.p !== 'object') return;
           const st = conns.get(conn) || {};
-          Object.assign(st, d.p); conns.set(conn, st); rebuildPeers();
+          Object.assign(st, d.p); conns.set(conn, st);
+          if (st.name && st.sentId !== nameKey(st.name)){ st.sentId = nameKey(st.name); try { conn.send({ t:'you', id: st.sentId }); } catch(e){} if (lastS) setTimeout(publish, 0); }
+          rebuildPeers();
         });
         const gone = () => { conns.delete(conn); rebuildPeers(); };
         conn.on('close', gone); conn.on('error', gone);
@@ -298,11 +301,11 @@ function resp(){
 const pname = id => (G.players.find(p => p.id === id) || {}).name || 'Someone';
 const addPts = (id, n) => { const p = G.players.find(x => x.id === id); if (p) p.score += n; };
 
-function go(rd, ph, extra){ G.rd = rd; G.ph = ph; Object.assign(G.cur, extra || {}); G.k = 'k' + (++G.kc); renderHost(); publish(); }
+function go(rd, ph, extra){ G.rd = rd; G.ph = ph; Object.assign(G.cur, extra || {}); G.k = G.gid + '.' + (++G.kc); renderHost(); publish(); }
 
 function publish(){
   if (!R || G.mode !== 'room') return;
-  const s = { k:G.k, rd:G.rd, ph:G.ph, pl:G.players.map(p => [p.id, p.name]) };
+  const s = { g:G.gid, k:G.k, rd:G.rd, ph:G.ph, pl:G.players.map(p => [p.id, p.name]) };
   const c = G.cur;
   if (G.rd===1 && (G.ph==='ans')) s.q = c.prompt[0];
   if (G.rd===1 && (G.ph==='guess' || G.ph==='reveal')) { s.q = c.prompt[0]; s.a = c.answers[c.ai].text; }
@@ -314,7 +317,10 @@ function publish(){
   if (G.rd===3 && (G.ph==='vote' || G.ph==='reveal')) s.it = c.item;
   s.sp = G.spicy ? 1 : 0;
   lastS = s;
-  for (const conn of conns.keys()){ try { if (conn.open) conn.send({ t:'s', s }); } catch(e){} }
+  const author = (G.rd===1 && G.ph==='guess') ? G.cur.answers[G.cur.ai].by : null;
+  for (const [conn, st] of conns.entries()){
+    try { if (conn.open) conn.send({ t:'s', s: author ? { ...s, mine: st.name ? nameKey(st.name) === author : false } : s }); } catch(e){}
+  }
 }
 
 /* ---- flow ---- */
@@ -322,7 +328,8 @@ function startGame(){
   const pool = C.who.filter(x => G.spicy || !x[1]);
   G.players.forEach(p => p.score = 0);
   G.preds = [];
-  G.r1 = { prompts: pick(pool, G.cfg.r1), pi:0 };
+  G.gid = newGid(); G.kc = 0;
+  G.r1 = { prompts: pick(pool, G.cfg.r1), pi:0, shown:[] };
   go(1,'intro');
 }
 function r1Ask(){ go(1,'ans',{ prompt:G.r1.prompts[G.r1.pi], passI:0, passOpen:false, passAns:{} }); }
@@ -360,7 +367,10 @@ function next(){
       const src = G.mode==='room' ? resp() : c.passAns;
       const answers = shuffle(Object.entries(src).filter(([id,t]) => typeof t==='string' && t.trim()).map(([by,text]) => ({by, text:text.trim().slice(0,140)})));
       if (!answers.length) return r1NextPrompt();
-      return go(1,'guess',{ answers, ai:0, votes:{}, awarded:[] });
+      const fresh = answers.filter(a => !G.r1.shown.includes(a.by));
+      const chosen = (fresh.length ? fresh : answers)[0];
+      G.r1.shown.push(chosen.by);
+      return go(1,'guess',{ answers:[chosen], total:answers.length, ai:0, votes:{}, awarded:[] });
     }
     case '1:guess': {
       const a = c.answers[c.ai];
@@ -450,11 +460,12 @@ function miniScores(){
 }
 function foot(label, disabled){
   return `<div class="foot"><span class="pill">${G.mode==='room' ? 'Game code ' + esc(G.code) : 'Pass-the-phone mode'}</span>
-    <div class="row"><button class="btn ghost small" id="fQuit">End game</button>
+    <div class="row">${G.mode==='room' ? '<button class="btn ghost small" id="fResend" title="Use if a phone looks stuck">🔄 Resend to phones</button>' : ''}<button class="btn ghost small" id="fQuit">End game</button>
     ${label ? `<button class="btn green" id="fNext" ${disabled?'disabled':''}>${label} ▶</button>` : ''}</div></div>`;
 }
 function bindFoot(){
   const n = document.getElementById('fNext'); n && (n.onclick = next);
+  const rs = document.getElementById('fResend'); rs && (rs.onclick = () => { publish(); rs.textContent = '✓ Sent'; setTimeout(()=>{ rs.textContent = '🔄 Resend to phones'; }, 1500); });
   const q = document.getElementById('fQuit'); q && (q.onclick = () => { if (G.rd===0) { try{ HOST && HOST.destroy(); }catch(e){} HOST=null; R=null; conns=new Map(); peersNow=[]; renderHome(); } else finish(); });
 }
 
@@ -492,7 +503,7 @@ function renderHost(){
   }
   else if (G.ph === 'intro'){
     const r = ROUNDS[G.rd];
-    const how = {1:'Everyone answers the prompt in secret. Then we guess who wrote each answer.',
+    const how = {1:'Everyone answers the prompt in secret. Then one mystery answer comes up and we guess who wrote it.',
                  2:'One person takes the hot seat. Everyone else picks the question. Then we listen to the story.',
                  3:'Make your calls for the year ahead. We’ll save them and check back next Thanksgiving.'}[G.rd];
     const pts = {1: G.mode==='room' ? '+100 for a right guess · +50 for every person you fool' : '', 2: G.mode==='room' ? '+100 for telling your story · +100 if your question gets picked':'', 3:'No points. Just bragging rights in 2027.'}[G.rd];
@@ -521,7 +532,7 @@ function renderHost(){
     }
   }
   else if (k === '1:guess'){
-    h = roundBanner(1) + `<p class="note">${esc(c.prompt[0])}</p><p class="note">Answer ${c.ai+1} of ${c.answers.length}</p>
+    h = roundBanner(1) + `<p class="note">${esc(c.prompt[0])}</p><p class="note">Prompt ${G.r1.pi+1} of ${G.r1.prompts.length} · one mystery answer from ${c.total} in</p>
         <p class="big">“${esc(c.answers[c.ai].text)}”</p>
         <p class="mid">Who said it?</p>${G.mode==='room' ? statusChips() + '<p class="note">Vote on your phone.</p>' : '<p class="note">Everyone guess out loud!</p>'}` + foot('Reveal');
   }
@@ -577,7 +588,7 @@ function renderHost(){
     document.getElementById('copy').onclick = () => {
       navigator.clipboard.writeText(txt).then(()=>{document.getElementById('copied').textContent='Copied! Paste it somewhere safe.';}).catch(()=>{document.getElementById('copied').textContent='Copy didn’t work here. Take a photo of the screen instead.';});
     };
-    document.getElementById('again').onclick = () => { const keep = G.players.map(p=>({...p,score:0})); G.rd=0; G.ph='lobby'; G.cur={}; G.players=keep; G.k='k'+(++G.kc); renderHost(); publish(); };
+    document.getElementById('again').onclick = () => { const keep = G.players.map(p=>({...p,score:0})); G.rd=0; G.ph='lobby'; G.cur={}; G.players=keep; G.gid=newGid(); G.kc=0; G.k=G.gid+'.0'; renderHost(); publish(); };
     return;
   }
 
@@ -651,7 +662,7 @@ async function doJoin(){
   if (code.length !== 4) return renderJoin('Enter the 4-letter code from the TV.');
   if (!name) return renderJoin('Add your name so the table knows who you are.');
   store.set('mvtg-name', name);
-  P.code = code; P.name = name;
+  P.code = code; P.name = name; P.gid = null; resetPlayerMemory();
   connectPlayer();
 }
 async function connectPlayer(){
@@ -670,7 +681,10 @@ async function connectPlayer(){
     P.pres = {};
     sendPres({ role:'p', pid:P.me, name:P.name, r: P.lastK && P.sent[P.lastK] !== undefined ? { k:P.lastK, v:P.sent[P.lastK] } : null });
   });
-  conn.on('data', d => { if (d && d.t === 's' && d.s){ gotState = true; playerState(d.s); } });
+  conn.on('data', d => {
+    if (d && d.t === 'you' && typeof d.id === 'string'){ P.me = d.id; if (P.s) renderPlayer(P.s, true); }
+    if (d && d.t === 's' && d.s){ gotState = true; playerState(d.s); }
+  });
   conn.on('close', () => { if (P.conn === conn) lost('Lost the connection to the TV.'); });
   setTimeout(() => { if (P.conn === conn && !gotState) lost(`Can't find a game with code ${P.code}. Check the TV.`); }, 10000);
 }
@@ -686,7 +700,9 @@ document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible' && view === 'player' && (!P.conn || !P.conn.open) && P.code) connectPlayer();
 });
 function respond(v){ P.sent[P.lastK] = v; sendPres({ r:{ k:P.lastK, v } }); renderPlayer(P.s, true); }
+function resetPlayerMemory(){ P.sent = {}; P.mine = {}; P.sugg = {}; P.lastK = null; P.s = null; }
 function playerState(s){
+  if (s.g !== P.gid){ P.gid = s.g; resetPlayerMemory(); }  /* new game: forget old answers */
   if (s.k !== P.lastK || !P.s){ P.lastK = s.k; P.s = s; renderPlayer(s, true); }
 }
 function waitScreen(title, sub){ return `<div class="emoji">📺</div><p class="mid">${title}</p><p class="note">${sub||'Eyes on the TV.'}</p>`; }
@@ -705,7 +721,7 @@ function renderPlayer(s, force){
     else h = `<p class="mid">${esc(s.q)}</p><input type="text" id="a" maxlength="140" placeholder="Keep it short" autocomplete="off"><button class="btn block" id="send" style="margin-top:12px">Send</button>`;
   }
   else if (k === '1:guess'){
-    const mine = P.mine[s.q] && P.mine[s.q].toLowerCase() === String(s.a).toLowerCase();
+    const mine = (typeof s.mine === 'boolean') ? s.mine : (P.mine[s.q] && P.mine[s.q].toLowerCase() === String(s.a).toLowerCase());
     if (mine && sent === undefined) h = `<p class="mid">“${esc(s.a)}”</p><p class="big" style="font-size:28px">That one's yours 😏</p>
       <p class="note"><b>Fake vote:</b> these buttons don't count. Tap one whenever you like so nobody can tell you wrote it.</p>
       <div class="opts">${others.map(([id,n])=>`<button class="opt" data-v="fake:${esc(id)}">Fake vote: ${esc(n)}</button>`).join('')}</div>`;
